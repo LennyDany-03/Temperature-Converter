@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Temperature Converture</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body{
+                background-image: url(Nature.jpeg);
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 35em;
+            } 
+            .container{
+                border: 2px solid #101720;
+                text-align: center;
+                border-radius: 10px;
+                width: 300px;
+                backdrop-filter: blur(10px);
+                background: rgba(255, 255, 255, 0.8);
+                color: #101720;
+
+            }
+            .container .input-bar{
+                width: 100%;
+                height: 50px;
+            }
+            .input-bar input{
+                width: 100%;
+                height: 100%;
+                border-radius: 40px;
+                font-size: 18px;
+                padding: 20px;
+                outline: none;
+                background: transparent;
+
+            }
+            .input-bar input::placeholder{
+                color: #101720;
+            }
+            .container h1{
+                text-align: center;
+                padding: 25px;
+                color: #101720;
+            }
+            .container .input{
+                font-size: 18px;
+                padding: 25px;
+                color: #101720;
+                display: block;
+                text-align: left;
+            }
+
+            .container button{
+                padding: 10px 50px;
+                font-size: 18px;
+                border-radius: 15px;
+                background-color: rgb(126, 0, 126);
+                color: silver;
+                transition: background-color 0.25s;
+            }
+            .container button:hover{
+                background-color: rgb(170, 20, 170);
+                color: rgb(212, 209, 209);
+            }
+            .container #para1{
+                padding: 20px;
+                font-size: 20px;
+                font-weight: bold;
+                font-style: italic;
+            }
+            .container #para2{
+                padding: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1> Temperature Converture</h1>
+            <div class="input-bar">
+                <input type="text" id="temp" placeholder="Temperature">
+            </div>
+            <div class="input">
+                <!-- Celsius to Fahrenheit-->
+                <input type="radio" name="convert" id="CelsiustoFahrenheit">
+                <label for="CelsiustoFahrenheit">Celsius to Fahrenheit </label><br>
+                <!--Fahrenheit to Celsius-->
+                <input type="radio" name="convert" id="FahrenheittoCelsius">
+                <label for="FahrenheittoCelsius">Fahrenheit to Celsius</label><br>
+                <!--Celsius to Kelvin-->
+                <input type="radio" name="convert" id="CelsiustoKelvin">
+                <label for="Fahrenheit">Celsius to Kelvin</label><br>
+                <!--Kelvin to Celsius-->
+                <input type="radio" name="convert" id="KelvintoCelsius">
+                <label for="KelvintoCelsius">Kelvin to Celsius</label><br>
+                <!--Fahrenheit to Kelvin-->
+                <input type="radio" name="convert" id="FahrenheittoKelvin">
+                <label for="FahrenheittoKelvin">Fahrenheit to Kelvin</label><br>
+                <!--Kelvin to Fahrenhit-->
+                <input type="radio" name="convert" id="KelvintoFahrenhit">
+                <label for="KelvintoFahrenhit">Kelvin to Fahrenheit</label><br>
+            </div>
+            <button id="mySumit">Sumit</button>
+            <p id="para1"></p>
+            <p id="para2"></p>
+        </div>
+        <script>
+
+            // Temperature Converter
+
+            let answer;
+            let button = document.getElementById("mySumit");
+            let temperature = document.getElementById("temp").value;
+            let celsius_fahrenheit = document.getElementById("CelsiustoFahrenheit");
+            let fahrenheit_celsius = document.getElementById("FahrenheittoCelsius");
+            let Celsius_Kelvin = document.getElementById("CelsiustoKelvin");
+            let Kelvin_Celsius = document.getElementById("KelvintoCelsius");
+            let Fahrenheit_Kelvin = document.getElementById("FahrenheittoKelvin");
+            let Kelvin_Fahrenhit = document.getElementById("KelvintoFahrenhit");
+            let para1 = document.getElementById("para1");
+            let para2 = document.getElementById("para2");
+
+
+            function celsiustofahrenheit(){
+                let result = (9/5 * temperature) + 32;
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Fahrenhit`);
+                para1.textContent = `Temperature : ${answer} Fahrenhit`;
+            }
+            function fahrenheittocelsius(){
+                let result = 5/9 * (temperature - 32);
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Celsius`);
+                para1.textContent = `Temperature : ${answer} Celsius`;
+            }
+            function CelsiustoKelvin(){
+                let result = temperature + 273.15;
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Kelvin`);
+                para1.textContent = `Temperature : ${answer} Kelvin`;
+            }
+            function KelvintoCelsius(){
+                let result = temperature - 273.15;
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Celsius`);
+                para1.textContent = `Temperature : ${answer} Celsius`;
+            }
+            function FahrenheittoKelvin(){
+                let result = 5/9 * (temperature - 32) + 273.15;
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Kelvin`);
+                para1.textContent = `Temperature : ${answer} Kelvin`;
+            }
+            function KelvintoFahrenhit(){
+                let result = 9/5 * (temperature - 273.15) + 32;
+                answer = Math.round(result * 100)/100;
+                console.log(`Temperature : ${answer} Fahrenhit`);
+                para1.textContent = `Temperature : ${answer} Fahrenhit`;
+            }
+
+            button.onclick = function(){
+                temperature = document.getElementById("temp").value;
+                temperature = Number(temperature);
+                celsius_fahrenheit = document.getElementById("CelsiustoFahrenheit");
+                fahrenheit_celsius = document.getElementById("FahrenheittoCelsius");
+                Celsius_Kelvin = document.getElementById("CelsiustoKelvin");
+                Kelvin_Celsius = document.getElementById("KelvintoCelsius");
+                Fahrenheit_Kelvin = document.getElementById("FahrenheittoKelvin");
+                Kelvin_Fahrenhit = document.getElementById("KelvintoFahrenhit");
+
+                if (celsius_fahrenheit.checked){
+                    celsiustofahrenheit();
+                }
+                else if (fahrenheit_celsius.checked){
+                    fahrenheittocelsius();
+                }
+                else if (Celsius_Kelvin.checked){
+                    CelsiustoKelvin();
+                }
+                else if (Kelvin_Celsius.checked){
+                    KelvintoCelsius();
+                }
+                else if (Fahrenheit_Kelvin.checked){
+                    FahrenheittoKelvin();
+                }
+                else if (Kelvin_Fahrenhit.checked){
+                    KelvintoFahrenhit();
+                }
+                else if(temperature == ""){
+                    window.alert("Enter Temperature");
+                }
+                else if(isNaN(temperature)){
+                    window.alert(`Please Enter Temperature Only`);
+                }
+            }
+        </script>
+    </body>
+</html>
